@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 95%;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Student Performance Predictor</h2>
+
+    <form action="/predict" method="post">
+
+        Gender:
+        <input name="gender"><br>
+
+        Race:
+        <input name="race"><br>
+
+        Parental Education:
+        <input name="parental"><br>
+
+        Lunch:
+        <input name="lunch"><br>
+
+        Test Course:
+        <input name="test"><br>
+
+        Math Score:
+        <input name="math" type="number"><br>
+
+        Reading Score:
+        <input name="reading" type="number"><br>
+
+        Writing Score:
+        <input name="writing" type="number"><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+</div>
+
+</body>
+</html>
