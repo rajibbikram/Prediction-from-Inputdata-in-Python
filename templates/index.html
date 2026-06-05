@@ -1,83 +1,160 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Student Performance Predictor</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #f2f2f2;
-            text-align: center;
-        }
+    <!DOCTYPE html>
 
-        .box {
-            background: white;
-            width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
+    <html>
 
-        input, select {
-            width: 90%;
-            padding: 8px;
-            margin: 5px;
-        }
+    <head>
+        <title>Student Performance Predictor</title>
 
-        button {
-            background: green;
-            color: white;
-            padding: 10px;
-            border: none;
-            width: 95%;
-            cursor: pointer;
-        }
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
 
-        h2 {
-            color: darkblue;
-        }
-    </style>
-</head>
+            body {
+                background: linear-gradient(135deg, #4e5be5, #6f7df7);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box {
+                background: white;
+                width: 650px;
+                padding: 25px;
+                border-radius: 15px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            h2 {
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 6px;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                outline: none;
+                font-size: 14px;
+                transition: 0.3s;
+            }
+
+            input:focus,
+            select:focus {
+                border-color: #4e5be5;
+                box-shadow: 0 0 5px rgba(78, 91, 229, 0.4);
+            }
+
+            button {
+                width: 100%;
+                padding: 12px;
+                background: #28a745;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            button:hover {
+                background: #218838;
+            }
+
+            h3 {
+                margin-top: 20px;
+                text-align: center;
+                color: #4e5be5;
+            }
+        </style>
+
+    </head>
 
 <body>
+    <div class="box">
+        <h2>Student Performance Predictor</h2>
 
-<div class="box">
-    <h2>Student Performance Predictor</h2>
+        <form action="/predict" method="post">
 
-    <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input id="gender" name="gender" placeholder="male / female">
+            </div>
 
-        Gender:
-        <input name="gender"><br>
+            <div class="form-group">
+                <label for="race">Race / Ethnicity</label>
+                <input id="race" name="race" placeholder="group A / B / C">
+            </div>
 
-        Race:
-        <input name="race"><br>
+            <div class="form-group">
+                <label for="parental">Parental Education</label>
+                <input id="parental" name="parental" placeholder="Bachelor's degree, Master's degree, etc.">
+            </div>
 
-        Parental Education:
-        <input name="parental"><br>
+            <div class="form-group">
+                <label for="lunch">Lunch</label>
+                <input id="lunch" name="lunch" placeholder="standard / free-reduced">
+            </div>
 
-        Lunch:
-        <input name="lunch"><br>
+            <div class="form-group">
+                <label for="test">Test Preparation Course</label>
+                <input id="test" name="test" placeholder="completed / none">
+            </div>
 
-        Test Course:
-        <input name="test"><br>
+            <div class="form-group">
+                <label for="math">Math Score</label>
+                <input id="math" name="math" type="number" min="0" max="100" placeholder="0 - 100">
+            </div>
 
-        Math Score:
-        <input name="math" type="number"><br>
+            <div class="form-group">
+                <label for="reading">Reading Score</label>
+                <input id="reading" name="reading" type="number" min="0" max="100" placeholder="0 - 100">
+            </div>
 
-        Reading Score:
-        <input name="reading" type="number"><br>
+            <div class="form-group">
+                <label for="writing">Writing Score</label>
+                <input id="writing" name="writing" type="number" min="0" max="100" placeholder="0 - 100">
+            </div>
 
-        Writing Score:
-        <input name="writing" type="number"><br>
+            <button type="submit">Predict Score</button>
 
-        <button type="submit">Predict</button>
-    </form>
+        </form>
 
-    {% if result %}
-        <h3>Result: {{ result }}</h3>
-    {% endif %}
-</div>
+        {% if result %}
+        <h3>Prediction Result: {{ result }}</h3>
+        {% endif %}
+    </div>
 
 </body>
+
+</html>
+
+
+</body>
+
 </html>

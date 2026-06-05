@@ -15,6 +15,7 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
+        #These names MUST match your HTML input name=""
         gender = request.form.get("gender")
         race = request.form.get("race")
         parental = request.form.get("parental")
@@ -25,6 +26,7 @@ def predict():
         reading = float(request.form.get("reading", 0))
         writing = float(request.form.get("writing", 0))
 
+        #This converts form data into ML format
         input_data = pd.DataFrame([{
             "gender": gender,
             "race/ethnicity": race,
@@ -36,9 +38,12 @@ def predict():
             "writing score": writing
         }])
 
+        #First data is encoded/scaled
+        #Then model predicts result
         transformed = preprocessor.transform(input_data)
         prediction = model.predict(transformed)[0]
 
+        #Show result on webpag
         return render_template("index.html", result=prediction)
 
     except Exception as e:
